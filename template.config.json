@@ -1,0 +1,26 @@
+{
+  "slug": "ecommerce",
+  "name": "Ecommerce",
+  "category": "ecommerce",
+  "surfaces": ["server", "client"],
+  "framework": { "server": "hono", "client": "vite_react" },
+  "engine": "bun",
+  "requiresDb": true,
+  "version": "1.0.0",
+  "repo": "https://github.com/umkm-ai/template-ecommerce",
+  "config": [
+    { "key": "storeName", "label": "Nama toko", "type": "string", "required": true },
+    { "key": "currency", "label": "Mata uang", "type": "string", "default": "IDR" }
+  ],
+  "env": [
+    { "key": "DATABASE_URL", "required": true, "secret": true },
+    { "key": "PORT", "required": false, "default": "3000" }
+  ],
+  "scripts": {
+    "install": "bun install",
+    "migrate": "bunx prisma migrate deploy",
+    "seed": "bun run prisma/seed.ts",
+    "dev": "bun run src/index.ts",
+    "build": "bun build src/index.ts --target bun --outdir dist"
+  }
+}
